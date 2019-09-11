@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="https://fonts.googleapis.com/css?family=Great+Vibes|Kaushan+Script|Ubuntu" rel="stylesheet">
+<link href="./Equipment_Sim_files/css.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="./Equipment_Sim_files/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="./Equipment_Sim_files/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="./Equipment_Sim_files/core.css">
+<link rel="stylesheet" type="text/css" href="./Equipment_Sim_files/equip_sim.css">
+<script type="text/javascript" src="./Equipment_Sim_files/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="./Equipment_Sim_files/core.js"></script>
+<script type="text/javascript" src="./Equipment_Sim_files/jquery-ui.min.js"></script>
+<script type="text/javascript" src="./Equipment_Sim_files/clipboard.min.js"></script>
+<script type="text/javascript" src="./Equipment_Sim_files/equip_sim.js"></script>
+<script type="text/javascript" src="./Equipment_Sim_files/equip_sim_math.js"></script>
+<script type="text/javascript" src="./Equipment_Sim_files/CrystalPanel.js"></script>
+<script type="text/javascript" src="./Equipment_Sim_files/MarqueePanel.js"></script>
+<script type="text/javascript" src="./Equipment_Sim_files/equip_info.js"></script>
+
+<title>Equipment Simulator</title>
+
+</head>
+
+<body>
+
+	<div class="background"></div>
+<div class="container-fluid">
+	<div class="col-2 offset-0 offset-sm-2">
+	<ul class="nav nav-pills marquee-pills">
+		<li class="nav-item"><a class="nav-link" href="#" id="assessment">Assessment</a></li>
+	</ul>
+	</div>
+	<div class="row m-0">
+		<div class="newschool col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2" id="marquee">
+			<div class="closer" title="Hide">&times;</div>
+			<table class="my-3 mr-0 assessment" style="display:none">
+				<thead>
+					<tr>
+						<td colspan="5" align="center"><h4>Setup Assessment</h4></td>
+					</tr>
+					<tr>
+						<td class="stat" width="">Stat</td><td width="40%"></td><td class="rating" width="5%">Rating</td><td class="amount" width="20%">Current<br>Amount</td><td class="max" width="15%">Max<br>Possible</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td align="center">DMG MIN</td>
+						<td><div class="slider"><div class="progress_bar dmg_low_bg" id="bar_damage_low" style="width: 0.396825%;"></div></div></td>
+						<td align="center" id="rating_damage_low">0</td>
+						<td align="center" id="stat_damage_low">1</td>
+						<td align="center" id="max_damage_low">252</td>
+					</tr>
+					<tr>
+						<td align="center">DMG MAX</td>
+						<td><div class="slider"><div class="progress_bar dmg_high_bg" id="bar_damage_high" style="width: 0.571429%;"></div></div></td>
+						<td align="center" id="rating_damage_high">1</td>
+						<td align="center" id="stat_damage_high">2</td>
+						<td align="center" id="max_damage_high">350</td>
+					</tr>
+					<tr>
+						<td align="center">ARM</td>
+						<td><div class="slider"><div class="progress_bar arm_bg" id="bar_armor" style="width: 0%;"></div></div></td>
+						<td align="center" id="rating_armor">0</td>
+						<td align="center" id="stat_armor">0</td>
+						<td align="center" id="max_armor">42</td>
+					</tr>
+					<tr>
+						<td align="center">ACC</td>
+						<td><div class="slider"><div class="progress_bar acc_bg" id="bar_accuracy" style="width: 0%;"></div></div></td>
+						<td align="center" id="rating_accuracy">0</td>
+						<td align="center" id="stat_accuracy">0</td>
+						<td align="center" id="max_accuracy">292</td>
+					</tr>
+					<tr>
+						<td align="center">DGE</td>
+						<td><div class="slider"><div class="progress_bar dge_bg" id="bar_dodge" style="width: 0%;"></div></div></td>
+						<td align="center" id="rating_dodge">0</td>
+						<td align="center" id="stat_dodge">0</td>
+						<td align="center" id="max_dodge">164</td>
+					</tr>
+					<tr>
+						<td align="center">DSK</td>
+						<td><div class="slider"><div class="progress_bar dsk_bg" id="bar_d_skill" style="width: 0%;"></div></div></td>
+						<td align="center" id="rating_d_skill">0</td>
+						<td align="center" id="stat_d_skill">0</td>
+						<td align="center" id="max_d_skill">678</td>
+					</tr>
+					<tr>
+						<td align="center">MSK</td>
+						<td><div class="slider"><div class="progress_bar msk_bg" id="bar_m_skill" style="width: 0%;"></div></div></td>
+						<td align="center" id="rating_m_skill">0</td>
+						<td align="center" id="stat_m_skill">0</td>
+						<td align="center" id="max_m_skill">702</td>
+					</tr>
+					<tr>
+						<td align="center">GSK</td>
+						<td><div class="slider"><div class="progress_bar gsk_bg" id="bar_g_skill" style="width: 0%;"></div></div></td>
+						<td align="center" id="rating_g_skill">0</td>
+						<td align="center" id="stat_g_skill">0</td>
+						<td align="center" id="max_g_skill">540</td>
+					</tr>
+					<tr>
+						<td align="center">PSK</td>
+						<td><div class="slider"><div class="progress_bar psk_bg" id="bar_p_skill" style="width: 0%;"></div></div></td>
+						<td align="center" id="rating_p_skill">0</td>
+						<td align="center" id="stat_p_skill">0</td>
+						<td align="center" id="max_p_skill">538</td>
+					</tr>
+					<tr>
+						<td align="center">SPD</td>
+						<td><div class="slider"><div class="progress_bar spd_bg" id="bar_speed" style="width: 0%;"></div></div></td>
+						<td align="center" id="rating_speed">0</td>
+						<td align="center" id="stat_speed">0</td>
+						<td align="center" id="max_speed">549</td>
+					</tr>
+				</tbody>
+			</table>
+
+		</div>
+	</div>
+</div>
+
+<div class="container-fluid">
+	<div class="row mx-0 my-3">
+
+		<div id="armor" class="well item newschool mt-3  col-12 col-sm-8 offset-sm-2 col-md-4 offset-md-4 col-lg-2 offset-lg-1 ">
+			<div class="title">Armor</div>
+			<p class="text-center">
+				<select name="armor" class="form-control item">
+					<option value="none">Armor</option>
+							<option value="Titan Guard">Titan Guard</option>
+							<option value="SG1 Armor">SG1 Armor</option>
+							<option value="Dark Legion Armor">Dark Legion Armor</option>
+							<option value="Hellforged Armor">Hellforged Armor</option>
+							<option value="Prototype Armor">Prototype Armor</option>
+							<option value="Chaos Armor">Chaos Armor</option>
+				</select>
+			</p>
+
+			<div class="mod_sleeve">
+				<div class="newschool mod_holder text-center" style="width: 211.5px;">
+					<div class="title">Close</div>
+					<select class="form-control modifier">
+						<option value="none">No Modifier</option>
+					</select>
+				</div>
+			</div>
+
+			<p class="text-center img_holder">
+				<img class="mt-2 item_img" src="./Equipment_Sim_files/items/none.png" title="Select An Item" alt="Select An Item">
+			</p>
+			<div class="container-fluid p-0">
+					<div class="crystalPicker px-3" id="armorCP">
+						<div class="title pointer">Close</div>
+						<select class="form-control mt-2 size">
+							<option value="none">No Size</option>
+							<option value="Small">Small</option>
+							<option value="Medium">Medium</option>
+							<option value="Large">Large</option>
+							<option value="Giant">Giant</option>
+							<option value="Perfect">Perfect</option>
+						</select>
+						<select class="form-control type">
+							<option value="none">No Crystal</option>
+							<option value="Void">Void</option>
+							<option value="Fire">Fire</option>
+							<option value="Air">Air</option>
+							<option value="Water">Water</option>
+							<option value="Pink">Pink</option>
+							<option value="Orange">Orange</option>
+							<option value="Green">Green</option>
+							<option value="Yellow">Yellow</option>
+							<option value="Null">Null</option>
+							<option class="unique" value="Prime">Prime</option>
+							<option class="unique" value="Aeon">Aeon</option>
+							<option class="unique" value="Amulet">Amulet</option>
+							<option class="unique" value="Abyss">Abyss</option>
+							<option class="unique" value="Tainted Abyss">Tainted Abyss</option>
+						</select>
+					</div>
+
+				</div>
+				<ul class="crystal_holder">
+					<li class="crystal dropup ui-draggable ui-draggable-handle ui-droppable">
+						<img class="crystalimg unselected armor" src="./Equipment_Sim_files/items/small none.png">
+						<input class="armor" type="hidden" id="crystal0" value="none">
+					</li>
+					<li class="crystal ui-draggable ui-draggable-handle ui-droppable">
+						<img class="crystalimg unselected armor" src="./Equipment_Sim_files/items/small none.png">
+						<input class="armor" type="hidden" id="crystal1" value="none">
+					</li>
+					<li class="crystal ui-draggable ui-draggable-handle ui-droppable">
+						<img class="crystalimg unselected armor" src="./Equipment_Sim_files/items/small none.png">
+						<input class="armor" type="hidden" id="crystal2" value="none">
+					</li>
+					<li class="crystal ui-draggable ui-draggable-handle ui-droppable">
+						<img class="crystalimg unselected armor" src="./Equipment_Sim_files/items/small none.png">
+						<input class="armor" type="hidden" id="crystal3" value="none">
+					</li>
+				</ul>
+
+				<table class="shard armor mt-2" align="center" width="80%"></table>
+				<table class="stats armor mt-2" align="center" width="80%"></table>
+
+			<p></p>
+		</div>
+
+		<div class="clearfix visible-md"></div>
+
+		<div id="weapon1" class="well item newschool mt-3  col-12 col-sm-8 offset-sm-2 col-md-4 offset-md-2 col-lg-2 offset-lg-0 ">
+			<div class="title">Weapon1</div>
+			<p class="text-center">
+				<select name="weapon1" class="form-control item">
+					<option value="none">Weapon1</option>
+							<option class="Melee" value="Void Sword">Void Sword</option>
+							<option class="Gun" value="Rift Gun">Rift Gun</option>
+							<option class="Melee" value="Scythe">Scythe</option>
+							<option class="Melee" value="Chain Blade">Chain Blade</option>
+							<option class="Melee" value="Crystal Sword">Crystal Sword</option>
+							<option class="Gun" value="Rail Gun">Rail Gun</option>
+							<option class="Projectile" value="Crystal Bombs">Crystal Bombs</option>
+							<option class="Melee" value="Core Staff">Core Staff</option>
+							<option class="Gun" value="Rail Gun T2">Rail Gun T2</option>
+							<option class="Projectile" value="Crystal Bombs T2">Crystal Bombs T2</option>
+							<option class="Projectile" value="Concentrated Crystal Bombs T2">Concentrated Crystal Bombs T2</option>
+							<option class="Projectile" value="Split Crystal Bombs T2">Split Crystal Bombs T2</option>
+							<option class="Melee" value="Crystal Sword T2">Crystal Sword T2</option>
+							<option class="Melee" value="Chain Blade T2">Chain Blade T2</option>
+							<option class="Melee" value="Scythe T2">Scythe T2</option>
+							<option class="Melee" value="Void Axe">Void Axe</option>
+							<option class="Projectile" value="Void Bow">Void Bow</option>
+							<option class="Gun" value="Havoc Launcher">Havoc Launcher</option>
+							<option class="Gun" value="Q15 Gun">Q15 Gun</option>
+				</select>
+			</p>
+
+			<div class="mod_sleeve">
+				<div class="newschool mod_holder text-center" style="width: 211.5px;">
+					<div class="title">Close</div>
+					<select class="form-control modifier">
+						<option value="none">No Modifier</option>
+					</select>
+				</div>
+			</div>
+
+			<p class="text-center img_holder">
+				<img class="mt-2 item_img" src="./Equipment_Sim_files/items/none.png" title="Select An Item" alt="Select An Item">
+			</p>
+			<div class="container-fluid p-0">
+					<div class="crystalPicker px-3" id="weapon1CP">
+						<div class="title pointer">Close</div>
+						<select class="form-control mt-2 size">
+							<option value="none">No Size</option>
+							<option value="Small">Small</option>
+							<option value="Medium">Medium</option>
+							<option value="Large">Large</option>
+							<option value="Giant">Giant</option>
+							<option value="Perfect">Perfect</option>
+						</select>
+						<select class="form-control type">
+							<option value="none">No Crystal</option>
+							<option value="Void">Void</option>
+							<option value="Fire">Fire</option>
+							<option value="Air">Air</option>
+							<option value="Water">Water</option>
+							<option value="Pink">Pink</option>
+							<option value="Orange">Orange</option>
+							<option value="Green">Green</option>
+							<option value="Yellow">Yellow</option>
+							<option value="Null">Null</option>
+							<option class="unique" value="Prime">Prime</option>
+							<option class="unique" value="Aeon">Aeon</option>
+							<option class="unique" value="Amulet">Amulet</option>
+							<option class="unique" value="Abyss">Abyss</option>
+							<option class="unique" value="Tainted Abyss">Tainted Abyss</option>
+						</select>
+					</div>
+
+				</div>
+				<ul class="crystal_holder">
+					<li class="crystal dropup ui-draggable ui-draggable-handle ui-droppable">
+						<img class="crystalimg unselected weapon1" src="./Equipment_Sim_files/items/small none.png">
+						<input class="weapon1" type="hidden" id="crystal4" value="none">
+					</li>
+					<li class="crystal ui-draggable ui-draggable-handle ui-droppable">
+						<img class="crystalimg unselected weapon1" src="./Equipment_Sim_files/items/small none.png">
+						<input class="weapon1" type="hidden" id="crystal5" value="none">
+					</li>
+					<li class="crystal ui-draggable ui-draggable-handle ui-droppable">
+						<img class="crystalimg unselected weapon1" src="./Equipment_Sim_files/items/small none.png">
+						<input class="weapon1" type="hidden" id="crystal6" value="none">
+					</li>
+					<li class="crystal ui-draggable ui-draggable-handle ui-droppable">
+						<img class="crystalimg unselected weapon1" src="./Equipment_Sim_files/items/small none.png">
+						<input class="weapon1" type="hidden" id="crystal7" value="none">
+					</li>
+				</ul>
+
+				<table class="shard weapon1 mt-2" align="center" width="80%"></table>
+				<table class="stats weapon1 mt-2" align="center" width="80%"></table>
+
+			<p></p>
+		</div>
+
+		<div id="weapon2" class="well item newschool mt-3  col-12 col-sm-8 offset-sm-2 col-md-4 offset-md-0 col-lg-2 offset-lg-0 ">
+			<div class="title">Weapon2</div>
+			<p class="text-center">
+				<select name="weapon2" class="form-control item">
+					<option value="none">Weapon2</option>
+							<option class="Melee" value="Void Sword">Void Sword</option>
+							<option class="Gun" value="Rift Gun">Rift Gun</option>
+							<option class="Melee" value="Scythe">Scythe</option>
+							<option class="Melee" value="Chain Blade">Chain Blade</option>
+							<option class="Melee" value="Crystal Sword">Crystal Sword</option>
+							<option class="Gun" value="Rail Gun">Rail Gun</option>
+							<option class="Projectile" value="Crystal Bombs">Crystal Bombs</option>
+							<option class="Melee" value="Core Staff">Core Staff</option>
+							<option class="Gun" value="Rail Gun T2">Rail Gun T2</option>
+							<option class="Projectile" value="Crystal Bombs T2">Crystal Bombs T2</option>
+							<option class="Projectile" value="Concentrated Crystal Bombs T2">Concentrated Crystal Bombs T2</option>
+							<option class="Projectile" value="Split Crystal Bombs T2">Split Crystal Bombs T2</option>
+							<option class="Melee" value="Crystal Sword T2">Crystal Sword T2</option>
+							<option class="Melee" value="Chain Blade T2">Chain Blade T2</option>
+							<option class="Melee" value="Scythe T2">Scythe T2</option>
+							<option class="Melee" value="Void Axe">Void Axe</option>
+							<option class="Projectile" value="Void Bow">Void Bow</option>
+							<option class="Gun" value="Havoc Launcher">Havoc Launcher</option>
+							<option class="Gun" value="Q15 Gun">Q15 Gun</option>
+				</select>
+			</p>
+
+			<div class="mod_sleeve">
+				<div class="newschool mod_holder text-center" style="width: 211.5px;">
+					<div class="title">Close</div>
+					<select class="form-control modifier">
+						<option value="none">No Modifier</option>
+					</select>
+				</div>
+			</div>
+
+			<p class="text-center img_holder">
+				<img class="mt-2 item_img" src="./Equipment_Sim_files/items/none.png" title="Select An Item" alt="Select An Item">
+			</p>
+			<div class="container-fluid p-0">
+					<div class="crystalPicker px-3" id="weapon2CP">
+						<div class="title pointer">Close</div>
+						<select class="form-control mt-2 size">
+							<option value="none">No Size</option>
+							<option value="Small">Small</option>
+							<option value="Medium">Medium</option>
+							<option value="Large">Large</option>
+							<option value="Giant">Giant</option>
+							<option value="Perfect">Perfect</option>
+						</select>
+						<select class="form-control type">
+							<option value="none">No Crystal</option>
+							<option value="Void">Void</option>
+							<option value="Fire">Fire</option>
+							<option value="Air">Air</option>
+							<option value="Water">Water</option>
+							<option value="Pink">Pink</option>
+							<option value="Orange">Orange</option>
+							<option value="Green">Green</option>
+							<option value="Yellow">Yellow</option>
+							<option value="Null">Null</option>
+							<option class="unique" value="Prime">Prime</option>
+							<option class="unique" value="Aeon">Aeon</option>
+							<option class="unique" value="Amulet">Amulet</option>
+							<option class="unique" value="Abyss">Abyss</option>
+							<option class="unique" value="Tainted Abyss">Tainted Abyss</option>
+						</select>
+					</div>
+
+				</div>
+				<ul class="crystal_holder">
+					<li class="crystal dropup ui-draggable ui-draggable-handle ui-droppable">
+						<img class="crystalimg unselected weapon2" src="./Equipment_Sim_files/items/small none.png">
+						<input class="weapon2" type="hidden" id="crystal8" value="none">
+					</li>
+					<li class="crystal ui-draggable ui-draggable-handle ui-droppable">
+						<img class="crystalimg unselected weapon2" src="./Equipment_Sim_files/items/small none.png">
+						<input class="weapon2" type="hidden" id="crystal9" value="none">
+					</li>
+					<li class="crystal ui-draggable ui-draggable-handle ui-droppable">
+						<img class="crystalimg unselected weapon2" src="./Equipment_Sim_files/items/small none.png">
+						<input class="weapon2" type="hidden" id="crystal10" value="none">
+					</li>
+					<li class="crystal ui-draggable ui-draggable-handle ui-droppable">
+						<img class="crystalimg unselected weapon2" src="./Equipment_Sim_files/items/small none.png">
+						<input class="weapon2" type="hidden" id="crystal11" value="none">
+					</li>
+				</ul>
+
+				<table class="shard weapon2 mt-2" align="center" width="80%"></table>
+				<table class="stats weapon2 mt-2" align="center" width="80%"></table>
+
+			<p></p>
+		</div>
+
+		<div class="clearfix visible-md"></div>
+
+		<div id="misc1" class="well item newschool mt-3  col-12 col-sm-8 offset-sm-2 col-md-4 offset-md-2 col-lg-2 offset-lg-0 ">
+			<div class="title">Misc1</div>
+			<p class="text-center">
+				<select name="misc1" class="form-control item">
+					<option value="none">Misc1</option>
+							<option value="Bio Spinal Enhancer">Bio Spinal Enhancer</option>
+							<option value="Orphic Amulet">Orphic Amulet</option>
+							<option value="Inferno Amulet">Inferno Amulet</option>
+							<option value="Nerve Gauntlet">Nerve Gauntlet</option>
+							<option value="Aeon Amulet">Aeon Amulet</option>
+							<option value="Prime Amulet">Prime Amulet</option>
+							<option value="Amulet">Amulet</option>
+							<option value="Crystal Ring">Crystal Ring</option>
+							<option value="Droid Drone">Droid Drone</option>
+							<option value="Recon Drones">Recon Drones</option>
+							<option value="Core Shield">Core Shield</option>
+							<option value="Scout Drones">Scout Drones</option>
+							<option value="Projector Bots">Projector Bots</option>
+				</select>
+			</p>
+
+			<div class="mod_sleeve">
+				<div class="newschool mod_holder text-center" style="width: 211.5px;">
+					<div class="title">Close</div>
+					<select class="form-control modifier">
+						<option value="none">No Modifier</option>
+					</select>
+				</div>
+			</div>
+
+			<p class="text-center img_holder">
+				<img class="mt-2 item_img" src="./Equipment_Sim_files/items/none.png" title="Select An Item" alt="Select An Item">
+			</p>
+			<div class="container-fluid p-0">
+					<div class="crystalPicker px-3" id="misc1CP">
+						<div class="title pointer">Close</div>
+						<select class="form-control mt-2 size">
+							<option value="none">No Size</option>
+							<option value="Small">Small</option>
+							<option value="Medium">Medium</option>
+							<option value="Large">Large</option>
+							<option value="Giant">Giant</option>
+							<option value="Perfect">Perfect</option>
+						</select>
+						<select class="form-control type">
+							<option value="none">No Crystal</option>
+							<option value="Void">Void</option>
+							<option value="Fire">Fire</option>
+							<option value="Air">Air</option>
+							<option value="Water">Water</option>
+							<option value="Pink">Pink</option>
+							<option value="Orange">Orange</option>
+							<option value="Green">Green</option>
+							<option value="Yellow">Yellow</option>
+							<option value="Null">Null</option>
+							<option class="unique" value="Prime">Prime</option>
+							<option class="unique" value="Aeon">Aeon</option>
+							<option class="unique" value="Amulet">Amulet</option>
+							<option class="unique" value="Abyss">Abyss</option>
+							<option class="unique" value="Tainted Abyss">Tainted Abyss</option>
+						</select>
+					</div>
+
+				</div>
+				<ul class="crystal_holder">
+					<li class="crystal dropup ui-draggable ui-draggable-handle ui-droppable">
+						<img class="crystalimg unselected misc1" src="./Equipment_Sim_files/items/small none.png">
+						<input class="misc1" type="hidden" id="crystal12" value="none">
+					</li>
+					<li class="crystal ui-draggable ui-draggable-handle ui-droppable">
+						<img class="crystalimg unselected misc1" src="./Equipment_Sim_files/items/small none.png">
+						<input class="misc1" type="hidden" id="crystal13" value="none">
+					</li>
+					<li class="crystal ui-draggable ui-draggable-handle ui-droppable">
+						<img class="crystalimg unselected misc1" src="./Equipment_Sim_files/items/small none.png">
+						<input class="misc1" type="hidden" id="crystal14" value="none">
+					</li>
+					<li class="crystal ui-draggable ui-draggable-handle ui-droppable">
+						<img class="crystalimg unselected misc1" src="./Equipment_Sim_files/items/small none.png">
+						<input class="misc1" type="hidden" id="crystal15" value="none">
+					</li>
+				</ul>
+
+				<table class="shard misc1 mt-2" align="center" width="80%"></table>
+				<table class="stats misc1 mt-2" align="center" width="80%"></table>
+
+			<p></p>
+		</div>
+
+		<div id="misc2" class="well item newschool mt-3 col-12 col-sm-8 offset-sm-2 col-md-4 offset-md-0 col-lg-2 offset-lg-0">
+			<div class="title">Misc2</div>
+			<p class="text-center">
+				<select name="misc2" class="form-control item">
+					<option value="none">Misc2</option>
+							<option value="Bio Spinal Enhancer">Bio Spinal Enhancer</option>
+							<option value="Orphic Amulet">Orphic Amulet</option>
+							<option value="Inferno Amulet">Inferno Amulet</option>
+							<option value="Nerve Gauntlet">Nerve Gauntlet</option>
+							<option value="Aeon Amulet">Aeon Amulet</option>
+							<option value="Prime Amulet">Prime Amulet</option>
+							<option value="Amulet">Amulet</option>
+							<option value="Crystal Ring">Crystal Ring</option>
+							<option value="Droid Drone">Droid Drone</option>
+							<option value="Recon Drones">Recon Drones</option>
+							<option value="Core Shield">Core Shield</option>
+							<option value="Scout Drones">Scout Drones</option>
+							<option value="Projector Bots">Projector Bots</option>
+				</select>
+			</p>
+
+			<div class="mod_sleeve">
+				<div class="newschool mod_holder text-center" style="width: 211.5px;">
+					<div class="title">Close</div>
+					<select class="form-control modifier">
+						<option value="none">No Modifier</option>
+					</select>
+				</div>
+			</div>
+
+			<p class="text-center img_holder">
+				<img class="mt-2 item_img" src="./Equipment_Sim_files/items/none.png" title="Select An Item" alt="Select An Item">
+			</p>
+			<div class="container-fluid p-0">
+					<div class="crystalPicker px-3" id="misc2CP">
+						<div class="title pointer">Close</div>
+						<select class="form-control mt-2 size">
+							<option value="none">No Size</option>
+							<option value="Small">Small</option>
+							<option value="Medium">Medium</option>
+							<option value="Large">Large</option>
+							<option value="Giant">Giant</option>
+							<option value="Perfect">Perfect</option>
+						</select>
+						<select class="form-control type">
+							<option value="none">No Crystal</option>
+							<option value="Void">Void</option>
+							<option value="Fire">Fire</option>
+							<option value="Air">Air</option>
+							<option value="Water">Water</option>
+							<option value="Pink">Pink</option>
+							<option value="Orange">Orange</option>
+							<option value="Green">Green</option>
+							<option value="Yellow">Yellow</option>
+							<option value="Null">Null</option>
+							<option class="unique" value="Prime">Prime</option>
+							<option class="unique" value="Aeon">Aeon</option>
+							<option class="unique" value="Amulet">Amulet</option>
+							<option class="unique" value="Abyss">Abyss</option>
+							<option class="unique" value="Tainted Abyss">Tainted Abyss</option>
+						</select>
+					</div>
+
+				</div>
+				<ul class="crystal_holder">
+					<li class="crystal dropup ui-draggable ui-draggable-handle ui-droppable">
+						<img class="crystalimg unselected misc2" src="./Equipment_Sim_files/items/small none.png">
+						<input class="misc2" type="hidden" id="crystal16" value="none">
+					</li>
+					<li class="crystal ui-draggable ui-draggable-handle ui-droppable">
+						<img class="crystalimg unselected misc2" src="./Equipment_Sim_files/items/small none.png">
+						<input class="misc2" type="hidden" id="crystal17" value="none">
+					</li>
+					<li class="crystal ui-draggable ui-draggable-handle ui-droppable">
+						<img class="crystalimg unselected misc2" src="./Equipment_Sim_files/items/small none.png">
+						<input class="misc2" type="hidden" id="crystal18" value="none">
+					</li>
+					<li class="crystal ui-draggable ui-draggable-handle ui-droppable">
+						<img class="crystalimg unselected misc2" src="./Equipment_Sim_files/items/small none.png">
+						<input class="misc2" type="hidden" id="crystal19" value="none">
+					</li>
+				</ul>
+
+				<table class="shard misc2 mt-2" align="center" width="80%"></table>
+				<table class="stats misc2 mt-2" align="center" width="80%"></table>
+
+			<p></p>
+		</div>
+
+	</div>
+</div>
+
+
+<script type="text/javascript" src="./Equipment_Sim_files/tether.min.js"></script>
+<script type="text/javascript" src="./Equipment_Sim_files/bootstrap.min.js"></script>
+
+</body></html>

@@ -1,0 +1,365 @@
+/**
+*
+*
+*/
+
+.well#armor,
+.well#weapon1,
+.well#weapon2,
+.well#misc1,
+.well#misc2 {
+	overflow: hidden;
+}
+
+.crystalPicker {
+	background: -moz-linear-gradient(
+		left,
+		rgba(0, 0, 0, 0.15) 0%,
+		rgba(114, 0, 0, 1) 25%,
+		rgba(136, 0, 0, 1) 50%,
+		rgba(114, 0, 0, 1) 75%,
+		rgba(0, 0, 0, 0.15) 100%
+	);
+	background: -webkit-linear-gradient(
+		left,
+		rgba(0, 0, 0, 0.15) 0%,
+		rgba(114, 0, 0, 1) 25%,
+		rgba(136, 0, 0, 1) 50%,
+		rgba(114, 0, 0, 1) 75%,
+		rgba(0, 0, 0, 0.15) 100%
+	);
+	background: linear-gradient(
+		to right,
+		rgba(0, 0, 0, 0.15) 0%,
+		rgba(114, 0, 0, 1) 25%,
+		rgba(136, 0, 0, 1) 50%,
+		rgba(114, 0, 0, 1) 75%,
+		rgba(0, 0, 0, 0.15) 100%
+	);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#26000000', endColorstr='#26000000',GradientType=1 );
+	width: 100%;
+	height: 1px;
+	overflow: hidden;
+	position: absolute;
+	bottom: 0;
+	opacity: 0;
+}
+
+table.shard td.title {
+	font-size: 14pt;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+table.shard td.count {
+	width: 25%;
+	text-align: center;
+}
+
+table.shard td.noShards {
+	height: 84px;
+	text-align: center;
+}
+
+table.stats tr.head {
+	outline: thin #bbb solid;
+}
+table.stats tr {
+	text-align: center;
+}
+table.stats td.gold {
+	color: gold;
+}
+
+tr.dummy {
+	height: 26px;
+}
+
+td.stat,
+td.rating,
+td.amount,
+td.max {
+	text-align: center;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+#loadout td:first-child {
+	width: 25%;
+	text-align: center;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+td.left_cap,
+td.center_block,
+td.right_cap {
+	border-top: solid #bbb thin;
+	border-bottom: solid #bbb thin;
+	text-align: center;
+}
+td.left_cap {
+	border-left: solid #bbb thin;
+}
+td.right_cap {
+	border-right: solid #bbb thin;
+}
+/*
+*		
+*/
+
+.marquee-pills .nav-item a {
+	color: #bbb;
+}
+
+.marquee-pills .nav-item {
+	background: -webkit-linear-gradient(#220000, #700);
+	background: -moz-linear-gradient(#220000, #700);
+	background: -ms-linear-gradient(#220000, #700);
+}
+
+.marquee-pills .nav-item:hover,
+.marquee-pills .nav-item.active {
+	background: -webkit-linear-gradient(#220000, #a00);
+	background: -moz-linear-gradient(#220000, #a00);
+	background: -ms-linear-gradient(#220000, #a00);
+}
+
+#marquee {
+	height: 0;
+	opacity: 0;
+}
+
+table.loadouts td.setupDisplay {
+	min-width: 182px;
+	text-align: center;
+}
+
+.closer {
+	width: 37px;
+	height: 36px;
+	position: absolute;
+	top: 5px;
+	font-size: x-large;
+	text-align: center;
+	right: 5px;
+	cursor: pointer;
+	border: solid #c00 1px;
+	color: #c00;
+	border-radius: 100%;
+}
+
+.loadout_container {
+	width: 100%;
+	height: 245px;
+	overflow: auto;
+}
+
+.setupDisplay {
+	width: 182px;
+}
+
+#saver {
+	width: 100%;
+	max-width: 300px;
+}
+/* Ratings Table Bars */
+
+.slider {
+	height: 8px;
+	width: 100%;
+	background: -webkit-linear-gradient(#333, #bbb);
+	background: -moz-linear-gradient(#333, #bbb);
+	background: -o-linear-gradient(#333, #bbb);
+	background: -ms-linear-gradient(#333, #bbb);
+	border-radius: 5px;
+	box-shadow: 0 3px 3px #000;
+	overflow: hidden;
+}
+
+.progress_bar {
+	height: 8px;
+	width: 0;
+	position: relative;
+	top: 0;
+	left: 0;
+}
+
+/* Stats Table */
+
+#stat {
+	right: 0;
+}
+
+#stat_menu {
+	right: 0;
+}
+
+/* Item Container */
+
+.item_container img {
+	position: relative;
+}
+
+/* Shadows and Glowing Borders */
+
+.glow_green {
+	box-shadow: -3px 5px 10px green;
+}
+
+.glow_red {
+	box-shadow: -3px 5px 10px red;
+}
+
+.glow_lemon {
+	box-shadow: 0 5px 8px #f4f4ae;
+}
+
+/* Crystal Control Panel */
+
+.crystal_holder {
+	list-style: none;
+	margin: 0 auto;
+	padding: 0;
+	position: relative;
+	display: table;
+	text-align: center;
+}
+
+.crystal {
+	padding: 2px;
+	float: left;
+	position: relative;
+	cursor: pointer;
+}
+
+.selected {
+	outline: thin red solid;
+}
+
+.unselected {
+	outline: thin #666 dotted;
+}
+
+.focus {
+	outline: thin #fff solid;
+}
+
+.crystalimg:hover {
+	box-shadow: 0 5px 8px #f4f4ae;
+}
+
+.ui-draggable-dragging > img.crystalimg {
+	box-shadow: 0 5px 8px #f4f4ae;
+	z-index: 5;
+}
+
+/* Item Modifiers */
+
+.mod_sleeve {
+	width: 0%;
+	position: absolute;
+	left: 0;
+	top: 110px;
+	overflow: hidden;
+	z-index: 2;
+}
+
+.modifier {
+	margin: 12px 0;
+}
+
+.mod_tab_sleeve {
+	position: absolute;
+	left: 0;
+	top: 110px;
+	z-index: 1;
+}
+
+.tab_1,
+.tab_2,
+.mod_holder > .title {
+	cursor: pointer;
+}
+
+.mod_tab {
+	display: none;
+}
+
+/* Bar and Field Backgrounds for Stats */
+.dmg_low_bg {
+	background: -webkit-linear-gradient(#600, #f00);
+	background: -moz-linear-gradient(#600, #f00);
+	background: -o-linear-gradient(#600, #f00);
+	background: -ms-linear-gradient(#600, #f00);
+}
+
+.dmg_high_bg {
+	background: -webkit-linear-gradient(#300, #c00);
+	background: -moz-linear-gradient(#300, #c00);
+	background: -o-linear-gradient(#300, #c00);
+	background: -ms-linear-gradient(#300, #c00);
+}
+
+.arm_bg {
+	background: -webkit-linear-gradient(#4b0256, #a504bd);
+	background: -moz-linear-gradient(#4b0256, #a504bd);
+	background: -o-linear-gradient(#4b0256, #a504bd);
+	background: -ms-linear-gradient(#4b0256, #a504bd);
+}
+
+.acc_bg {
+	background: -webkit-linear-gradient(#555, #fff);
+	background: -moz-linear-gradient(#555, #fff);
+	background: -o-linear-gradient(#555, #fff);
+	background: -ms-linear-gradient(#555, #fff);
+	color: #000;
+}
+
+.dge_bg {
+	background: -webkit-linear-gradient(#030557, #060acf);
+	background: -moz-linear-gradient(#030557, #060acf);
+	background: -o-linear-gradient(#030557, #060acf);
+	background: -ms-linear-gradient(#030557, #060acf);
+}
+
+.dsk_bg {
+	background: -webkit-linear-gradient(#a20299, #ff00f0);
+	background: -moz-linear-gradient(#a20299, #ff00f0);
+	background: -o-linear-gradient(#a20299, #ff00f0);
+	background: -ms-linear-gradient(#a20299, #ff00f0);
+	color: #000;
+}
+
+.gsk_bg {
+	background: -webkit-linear-gradient(#007a03, #43d647);
+	background: -moz-linear-gradient(#007a03, #43d647);
+	background: -o-linear-gradient(#007a03, #43d647);
+	background: -ms-linear-gradient(#007a03, #43d647);
+	color: #000;
+}
+
+.msk_bg {
+	background: -webkit-linear-gradient(#623703, #ff8a00);
+	background: -moz-linear-gradient(#623703, #ff8a00);
+	bbackground	: -o-linear-gradient(#623703, #ff8a00);
+	background: -ms-linear-gradient(#623703, #ff8a00);
+	color: #000;
+}
+
+.psk_bg {
+	background: -webkit-linear-gradient(#5a5904, #fffc00);
+	background: -moz-linear-gradient(#5a5904, #fffc00);
+	background: -o-linear-gradient(#5a5904, #fffc00);
+	background: -ms-linear-gradient(#5a5904, #fffc00);
+	color: #000;
+}
+
+.spd_bg {
+	background: -webkit-linear-gradient(#111, #777);
+	background: -moz-linear-gradient(#111, #777);
+	background: -o-linear-gradient(#111, #777);
+	background: -ms-linear-gradient(#111, #777);
+}
